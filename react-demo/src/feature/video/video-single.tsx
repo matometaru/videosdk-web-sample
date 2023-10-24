@@ -148,7 +148,13 @@ const VideoContainer: React.FunctionComponent<RouteComponentProps> = (props) => 
           </AvatarActionContext.Provider>
         </div>
       </div>
-      <button style={{ position: 'fixed', bottom: 30 }} onClick={() => setOpen(true)}>
+      <button
+        style={{ position: 'fixed', bottom: 30 }}
+        onClick={async () => {
+          await mediaStream?.switchCamera('environment');
+          setOpen(true);
+        }}
+      >
         Camera
       </button>
       {open && (
